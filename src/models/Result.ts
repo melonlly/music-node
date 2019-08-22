@@ -8,7 +8,7 @@ import Model from "./Model"
  * @param data: any     数据
  */
 interface Result extends Model {
-    code: Number
+    status: Number
     msg: string
     data: any
 }

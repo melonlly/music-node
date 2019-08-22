@@ -5,11 +5,11 @@ import Result from "../Result"
  * @description 结果集model - 数组类型 List
  */
 class List implements Result {
-    code: Number
+    status: Number
     msg: string
     data: Array<any>
     constructor() {
-        this.code = 0
+        this.status = 0
         this.msg = "success"
     }
 }

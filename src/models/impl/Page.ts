@@ -13,7 +13,7 @@ import Result from "../Result"
  *      size: Number    每页大小
  */
 class Page implements Result {
-    code: Number
+    status: Number
     msg: string
     data: any
     total: Number
@@ -21,7 +21,7 @@ class Page implements Result {
     index: Number
     size: Number
     constructor(
-        code: Number = 0,
+        status: Number = 0,
         msg: string = "success",
         data: any,
         total: Number = 0,
@@ -29,7 +29,7 @@ class Page implements Result {
         index: Number = 1,
         size: Number = 10
     ) {
-        this.code = 0
+        this.status = 0
         this.msg = "success"
         this.total = 0
         this.pages = 0
