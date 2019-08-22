@@ -1,7 +1,9 @@
 import fetch from "node-fetch"
 import List from "../models/impl/List";
 import { Context } from "koa";
-import { global } from "melon";
+import { getLogger } from "log4js";
+
+const logger = getLogger("cheese")
 
 class RankController {
     constructor() { }
@@ -24,13 +26,13 @@ class RankController {
                     const code = data.code
                     if (code == 0) {
                         return {
-                            code,
+                            status: code,
                             data: data.data.topList,
                             msg: ""
                         }
                     } else {
                         return {
-                            code: -1,
+                            status: -1,
                             data: [],
                             msg: ""
                         }
@@ -38,9 +40,9 @@ class RankController {
                 },
                 // 失败
                 err => {
-                    global.logger.error(err)
+                    logger.error(err)
                     return {
-                        code: -1,
+                        status: -1,
                         data: [],
                         msg: ""
                     }
@@ -56,10 +58,10 @@ class RankController {
         const id = ctx.params.id || ""
         const data = await require(`../data/top-list/${id}.json`)
         if (data && data.toplistData) {
-            result.code = 0
+            result.status = 0
             result.data = data
         } else {
-            result.code = -1
+            result.status = -1
             result.data = []
         }
         ctx.body = result

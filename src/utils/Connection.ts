@@ -1,5 +1,7 @@
-import { global } from "melon";
 import { Sequelize } from "sequelize-typescript"
+import { getLogger } from "log4js";
+
+const logger = getLogger("cheese")
 
 class Connection {
     // 数据库类型
@@ -18,9 +20,9 @@ class Connection {
             this.connection = getConFn(config)
         }
         if (this.connection) {
-            global.logger.info(`${dialect}:连接创建成功！`)
+            logger.info(`${dialect}:连接创建成功！`)
         } else {
-            global.logger.info(`${dialect}:连接创建失败！`)
+            logger.info(`${dialect}:连接创建失败！`)
         }
     }
 }

@@ -2,7 +2,9 @@ import net from "net"
 import Client from "../Client"
 import clientConfig from "../../config/client" // 客户端配置文件
 import List from "../../models/impl/List"
-import { global } from "melon";
+import { getLogger } from "log4js";
+
+const logger = getLogger("cheese")
 
 class NodeToJavaClient implements Client {
     name: String = clientConfig.id
@@ -29,16 +31,16 @@ class NodeToJavaClient implements Client {
         })
 
         client.on("data", data => {
-            global.logger.info(`server：${data.toString()}`)
+            logger.info(`server：${data.toString()}`)
             client.end()
         })
 
         client.on("close", () => {
-            global.logger.info("Connection closed")
+            logger.info("Connection closed")
         })
 
         client.on("error", error => {
-            global.logger.info(`server error：${error}`)
+            logger.info(`server error：${error}`)
             client.destroy()
         })
 

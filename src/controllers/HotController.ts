@@ -1,6 +1,8 @@
 import fetch from "node-fetch"
 import { Context } from "koa";
-import { global } from "melon";
+import { getLogger } from "log4js";
+
+const logger = getLogger("cheese")
 
 class HotController {
     constructor() {}
@@ -20,13 +22,13 @@ class HotController {
                 const code = data.code
                 if (code == "0") {
                     return {
-                        code,
+                        status: code,
                         data: data.data.songList,
                         msg: ""
                     }
                 } else {
                     return {
-                        code: -1,
+                        status: -1,
                         data: [],
                         msg: ""
                     }
@@ -34,9 +36,9 @@ class HotController {
             },
             // 失败
             err => {
-                global.logger.error(err)
+                logger.error(err)
                 return {
-                    code: -1,
+                    status: -1,
                     data: [],
                     msg: ""
                 }
@@ -59,13 +61,13 @@ class HotController {
                 const code = data.code
                 if ( code == "0" ) {
                     return {
-                        code,
+                        status: code,
                         data: data.data,
                         msg: ""
                     }
                 } else {
                     return {
-                        code: -1,
+                        status: -1,
                         data: [],
                         msg: ""
                     }
@@ -73,9 +75,9 @@ class HotController {
             },
             // 失败
             err => {
-                global.logger.error(err)
+                logger.error(err)
                 return {
-                    code: -1,
+                    status: -1,
                     data: [],
                     msg: ""
                 }

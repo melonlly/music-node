@@ -5,10 +5,9 @@ import errorHandler from "./middleware/errorHandler" // 异常处理
 import app from "./app"
 import config from "./config/config"
 import Connection from "./utils/Connection"
-import { global } from "melon";
 // import clientConfig from "./config/client"
 // import request from "./utils/request"
-const datasource = require("./config/datasource.json") // 数据库配置
+const datasource = require("./config/datasource") // 数据库配置
 
 configure({
     appenders: { cheese: { type: "file", filename: `${__dirname}/logs/music.${new Date().toLocaleDateString()}.log` } },
@@ -46,13 +45,13 @@ app.use(errorHandler)
 //     ctx.logger = logger
 //     await next()
 // })
-global.logger = logger
+// global.logger = logger
 
 const server = app.listen(config.PORT, () => {
     console.log(`App is running at http://127.0.0.1:${config.PORT} in ${process.env.NODE_ENV} mode`)
 
     // 初始化数据库连接
-    global.mysql = new Connection("mysql", datasource.mysql)
+    // global.mysql = new Connection("mysql", datasource.mysql)
 
     // request.sendMsg({
     //     logger: logger,
