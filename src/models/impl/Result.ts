@@ -1,4 +1,4 @@
-import Model from "./Model"
+import Model from "../Model"
 
 /**
  * @name Result
@@ -7,10 +7,13 @@ import Model from "./Model"
  * @param msg: String   错误信息
  * @param data: any     数据
  */
-interface Result extends Model {
+class Result implements Model {
     status: Number
     msg: string
     data: any
+    constructor() {
+        this.status = 0
+    }
 }
 
 export default Result

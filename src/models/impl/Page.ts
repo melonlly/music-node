@@ -1,4 +1,4 @@
-import Result from "../Result"
+import Result from "./Result"
 
 /**
  * @name Page
@@ -12,7 +12,7 @@ import Result from "../Result"
  *      index: Number   当前页码
  *      size: Number    每页大小
  */
-class Page implements Result {
+class Page extends Result {
     status: Number
     msg: string
     data: any
@@ -29,6 +29,7 @@ class Page implements Result {
         index: Number = 1,
         size: Number = 10
     ) {
+        super()
         this.status = 0
         this.msg = "success"
         this.total = 0

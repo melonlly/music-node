@@ -1,8 +1,8 @@
 export default {
-    "mysql": {
+    mysql: {
         "database": "music",
         "user": "root",
-        "password": "123456",
+        "password": "Melon666",
         "host": "47.98.146.215",
         "port": 3306
     }

@@ -1,19 +1,19 @@
 import TableModel from "../../TableModel"
-import { Table, Column, Model, DataType, AllowNull, AutoIncrement, PrimaryKey } from "sequelize-typescript"
-import Dao from "../../../dao/Dao";
+import { Table, Column, Model, DataType } from "sequelize-typescript"
 
 @Table({
-    tableName: "t_user"
+    tableName: "t_user",
+    timestamps: false
 })
-class User extends Dao implements TableModel {
+class User extends Model<User> implements TableModel {
     tableName: string
 
     @Column({
-        type: DataType.INTEGER
+        type: DataType.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
     })
-    @AllowNull(false)
-    @AutoIncrement
-    @PrimaryKey
     id: number
 
     @Column({
@@ -55,7 +55,7 @@ class User extends Dao implements TableModel {
         type: DataType.STRING
     })
     mobile: string
-    
+
 }
 
 export default User

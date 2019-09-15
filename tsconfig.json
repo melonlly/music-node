@@ -15,14 +15,14 @@
         "baseUrl": ".",
         // 导入模块（根据module判断）的时候，也会去以下匹配的目录下寻找对应的模块的声明文件
         "paths": {
-            "*": [
-                "node_modules/*",
-                "src/types/*"
+            "@/*": [
+                "src/*"
             ]
         }
     },
     "include": [
-        "src/**/*"
+        "src/**/*.ts",
+        "src/**/*.tsx",
     ],
     "exclude": [
         "node_modules",

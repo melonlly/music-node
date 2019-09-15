@@ -1,12 +1,17 @@
 import fetch from "node-fetch"
 import { Context } from "koa";
 import { getLogger } from "log4js";
+import { route, GET } from "awilix-koa";
+import config from "../config/config"
 
 const logger = getLogger("cheese")
 
+@route(`${ config.baseRouter }/hot`)
 class HotController {
     constructor() {}
 
+    @route("/song")
+    @GET()
     async songList(ctx: Context) {
         ctx.body = await fetch(
             `https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1549528667549`,
@@ -46,6 +51,8 @@ class HotController {
         )
     }
 
+    @route("/key")
+    @GET()
     async getHotKeys(ctx: Context) {
         ctx.body = await fetch(
             `https://c.y.qq.com/splcloud/fcgi-bin/gethotkey.fcg?_=1559097149205&g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1`,

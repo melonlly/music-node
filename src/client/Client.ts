@@ -1,4 +1,4 @@
-import Result from "../models/Result"
+import Result from "../models/impl/Result"
 
 /**
  * @name Client

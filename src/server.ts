@@ -7,16 +7,15 @@ import config from "./config/config"
 import Connection from "./utils/Connection"
 // import clientConfig from "./config/client"
 // import request from "./utils/request"
-const datasource = require("./config/datasource") // 数据库配置
+import datasource from "./config/datasource"
+import User from "./models/impl/tableModels/User";
 
 configure({
     appenders: { cheese: { type: "file", filename: `${__dirname}/logs/music.${new Date().toLocaleDateString()}.log` } },
-    categories: { default: { appenders: ["cheese"], level: "error" } }
+    categories: { default: { appenders: ["cheese"], level: "all" } }
 })
 const logger = getLogger("cheese")
 
-// // 设置client-log为logger
-// clientConfig.logger = logger.log
 // clientConfig.socketRoot = `${__dirname}/tmp/`
 // // 发起client连接到server
 // ipc.connectTo("server", () => {
@@ -51,7 +50,11 @@ const server = app.listen(config.PORT, () => {
     console.log(`App is running at http://127.0.0.1:${config.PORT} in ${process.env.NODE_ENV} mode`)
 
     // 初始化数据库连接
-    // global.mysql = new Connection("mysql", datasource.mysql)
+    const conIns = new Connection("mysql", datasource.mysql)
+    conIns.connection.addModels([
+        User
+    ])
+    console.log(conIns.connection.models)
 
     // request.sendMsg({
     //     logger: logger,

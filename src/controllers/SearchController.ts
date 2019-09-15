@@ -1,15 +1,20 @@
 import fetch from "node-fetch"
 import { Context } from "koa";
 import { getLogger } from "log4js";
+import { route, GET } from "awilix-koa";
+import config from "../config/config"
 
 const logger = getLogger("cheese")
 
+@route(`${ config.baseRouter }/search`)
 class SearchController {
     constructor() { }
 
     /**
      * 查询关键字
      */
+    @route("/searchList")
+    @GET()
     async search(ctx: Context) {
         const query = ctx.query || {}
         ctx.body = await fetch(
