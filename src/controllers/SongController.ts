@@ -31,6 +31,9 @@ class SongController {
             .then(
                 // 成功
                 body => {
+                    logger.info(`/song/lyrics/:mid`)
+                    logger.info(ctx.params)
+                    logger.info(body)
                     if (body.indexOf("lyric") > -1) {
                         let lyric = body.split("lyric")[1]
                         lyric = lyric.replace('":"', "")
@@ -87,6 +90,9 @@ class SongController {
             .then(
                 // 成功
                 data => {
+                    logger.info(`/song/media`)
+                    logger.info(params)
+                    logger.info(data, data.data.items[0])
                     return data.data.items[0].vkey || ""
                 },
                 // 失败

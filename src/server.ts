@@ -11,7 +11,8 @@ import datasource from "./config/datasource"
 import User from "./models/impl/tableModels/User";
 
 configure({
-    appenders: { cheese: { type: "file", filename: `${__dirname}/logs/music.${new Date().toLocaleDateString()}.log` } },
+    // appenders: { cheese: { type: "file", filename: `${__dirname}/../logs/music.${new Date().toLocaleDateString()}.log` } },
+    appenders: { cheese: { type: "file", filename: `${__dirname}/../logs/music.${new Date().toLocaleString().split(",")[0].replace("/", "-").replace("/", "-")}.log` } },
     categories: { default: { appenders: ["cheese"], level: "all" } }
 })
 const logger = getLogger("cheese")

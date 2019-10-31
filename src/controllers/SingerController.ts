@@ -52,8 +52,8 @@ class SingerController {
                         const songList = _data.list
                         songList.forEach(({ musicData }: any) => {
                             songs.push({
-                                id: musicData.songid,
-                                mid: musicData.songmid,
+                                songid: musicData.songid,
+                                songmid: musicData.songmid,
                                 mediamid: musicData.strMediaMid,
                                 name: musicData.songname,
                                 singer_name: singer.name,
