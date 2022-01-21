@@ -57,7 +57,7 @@
     "koa-helmet": "^4.2.0",
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.2",
-    "log4js": "^4.5.1",
+    "log4js": "^6.4.0",
     "mysql2": "^1.7.0",
     "node-fetch": "^2.6.0",
     "reflect-metadata": "^0.1.13",
